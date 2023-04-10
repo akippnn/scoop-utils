@@ -1,7 +1,17 @@
 #Requires -RunAsAdministrator
-$currentDirectory = Get-Location
+$currentDirectory = $PSScriptRoot
 $scriptLocation = "scoop update.ps1"
 $taskName = "Scoop Update"
+
+$proceed = $false
+do {
+  $answer = Read-Host "The script will use $currentDirectory as the location for the script. This means that the script has to remain in this directory to use the written Task. Do you want to proceed? (Y/n)"
+  switch ($answer.ToUpper()) {
+    {$_ -in "Y", ""} { Write-Host "Proceeding..."; $proceed = $true }
+    "N"              { Write-Host "Aborting..."; return }
+    Default          { Write-Host "Invalid input." }
+  }
+} while (-not $proceed)
 
 Write-Host "Attempting to edit `"Scoop Update.xml`"."
 $xmlPath = "$($currentDirectory)\Scoop Update.xml"

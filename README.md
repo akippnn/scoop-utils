@@ -5,3 +5,5 @@
 As for now, this repository only houses `autoupdate` with fixed settings for now. Later scripts may be added as well as a functional CLI interface.
 
 [README.md WIP]
+
+For console freezes, see [the following StackOverflow answer](https://stackoverflow.com/a/62164553).
